@@ -1,0 +1,55 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+.header {
+
+    #basic-navbar-nav{
+        display: block !important;
+
+        .me-auto.navbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .categories {
+                display: flex;
+
+                a {
+                    margin: 0 10px;
+                }
+            }
+
+            .cart-box {       
+                display: flex;
+                align-items: center;
+    
+                #basic-nav-dropdown {
+
+                    margin-left: 10px;
+    
+                    span {
+                        .fa-shopping-cart {
+                            font-size: 32px;
+                        }
+            
+                        .badge {
+                            font-size: 10px;
+                            position: absolute;
+                            bottom: 32px;
+                            right: 15px;
+                        }
+                    }
+                }
+
+                .dropdown-menu[data-bs-popper] {
+                    left: unset;
+                    right: 0;
+                }
+            }
+            
+        }
+
+
+    }
+}
+
+
+
