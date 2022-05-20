@@ -25,8 +25,7 @@ export const CategoryProvider = ({ children }) => {
 
   return (
     <CategoryContext.Provider value={values}>
-      {" "}
-      {children}{" "}
+      {children}
     </CategoryContext.Provider>
   );
 };

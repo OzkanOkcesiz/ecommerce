@@ -1,18 +1,18 @@
 import axios from "axios";
-import { Field, Formik } from "formik";
+import { useFormik } from "formik";
 import { useState } from "react";
-import { Button, Card, Form, ListGroup, ListGroupItem, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
 
-const UpdateButton = ({product}) => {
+const UpdateButton = ({ product }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const { categories } = useCategory();
-  const [Image, setImage] = useState("");
+  const [imageUpdate, setImageUpdate] = useState("");
   const { productValue, setProductValue } = useProduct(true);
 
   const onInputChange = async (e) => {
@@ -20,8 +20,8 @@ const UpdateButton = ({product}) => {
       console.log(e.target.files);
       const file = e.target.files[0];
       const base64 = await convertBase64(file);
-      setImage(base64);
-      // setImage(URL.createObjectURL(image));
+      setImageUpdate(base64);
+      console.log(imageUpdate);
     }
   };
 
@@ -38,6 +38,99 @@ const UpdateButton = ({product}) => {
     });
   };
 
+  const onSubmitUpdate = (values) => {
+    console.log(
+      values.categoryId,
+      values.name,
+      values.author,
+      values.publisher,
+      values.price,
+    );
+
+  };
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      categoryId: "",
+      name: "",
+      author: "",
+      publisher: "",
+      price: "",
+      img: "",
+    },
+
+    validate: (values) => {
+      const errors = {};
+      if (!values.name) {
+        errors.name = "Alanı doldurun";
+      } else if (!values.categoryId) {
+        errors.categoryId = "Kategori Seçin";
+      } else if (values.categoryId === "Lütfen Kategori Seçin") {
+        errors.categoryId = "Kategori Seçin";
+      } else if (!values.author) {
+        errors.author = "Alanı doldurun";
+      } else if (!values.publisher) {
+        errors.publisher = "Alanı doldurun";
+      } else if (!values.price) {
+        errors.price = "Alanı doldurun";
+      } else if (!imageUpdate) {
+        errors.img = "Resim yükleyin";
+      }
+
+      return errors;
+    },
+
+    onSubmit: (values, { setSubmitting }) => {
+      axios
+        .put(`http://localhost:3000/products/${product.id}`, {
+          categoryId: values.categoryId,
+          name: values.name,
+          author: values.author,
+          publisher: values.publisher,
+          price: values.price,
+          img: imageUpdate,
+        })
+        .then((res) => {
+          console.log(res);
+          setSubmitting(false);
+          values.name = "";
+          values.author = "";
+          values.publisher = "";
+          values.price = "";
+          values.img = "";
+          setImageUpdate("");
+          setProductValue(!productValue);
+        })
+        .catch((err) => {
+          console.log(err);
+          setSubmitting(false);
+          values.categoryId = "";
+          values.name = "";
+          values.author = "";
+          values.publisher = "";
+          values.price = "";
+          values.img = "";
+        });
+
+      console.log(
+        values.categoryId,
+        values.name,
+        values.author,
+        values.publisher,
+        values.price,
+        imageUpdate
+      );
+    },
+  });
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -49,84 +142,13 @@ const UpdateButton = ({product}) => {
           <Modal.Title>Ürün Güncelle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Formik
-        initialValues={{
-          categoryId: "",
-          name: "",
-          author: "",
-          publisher: "",
-          price: "",
-          img: "",
-        }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.name) {
-            errors.name = "Alanı doldurun";
-          } else if (!values.categoryId) {
-            errors.categoryId = "Kategori Seçin";
-          } else if (values.categoryId === "Lütfen Kategori Seçin") {
-            errors.categoryId = "Kategori Seçin";
-          } else if (!values.author) {
-            errors.author = "Alanı doldurun";
-          } else if (!values.publisher) {
-            errors.publisher = "Alanı doldurun";
-          } else if (!values.price) {
-            errors.price = "Alanı doldurun";
-          } else if (!Image) {
-            errors.img = "Resim yükleyin";
-          }
-
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          axios
-            .post("http://localhost:3000/products", {
-              categoryId: values.categoryId,
-              name: values.name,
-              author: values.author,
-              publisher: values.publisher,
-              price: values.price,
-              img: Image,
-            })
-            .then((res) => {
-              console.log(res);
-              setSubmitting(false);
-              values.name = "";
-              values.author = "";
-              values.publisher = "";
-              values.price = "";
-              values.img = "";
-              setImage("");
-              setProductValue(!productValue);
-            })
-            .catch((err) => {
-              console.log(err);
-              setSubmitting(false);
-              values.categoryId = "";
-              values.name = "";
-              values.author = "";
-              values.publisher = "";
-              values.price = "";
-              values.img = "";
-            });
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <form onSubmit={handleSubmit}>
+          <form id="update-form" onSubmit={handleSubmit}>
             <select
               name={"categoryId"}
               onChange={handleChange}
               className="form-select"
             >
-              <option defaultValue={"selected"}>Yeni Kategori </option>
+              <option defaultValue={"selected"}>Lütfen Kategori Seçin</option>
               {categories.map((category) => (
                 <option value={category.id} key={category.id}>
                   {" "}
@@ -166,7 +188,7 @@ const UpdateButton = ({product}) => {
             />
             {errors.publisher && touched.publisher && errors.publisher}
             <br />
-            <Field
+            <Form.Control
               type="number"
               name="price"
               placeholder={product.price}
@@ -190,18 +212,18 @@ const UpdateButton = ({product}) => {
             <br />
             <div>
               <label
-                className={Image ? "btn btn-primary" : "btn btn-primary"}
-                htmlFor="upload"
+                className={imageUpdate ? "btn btn-primary" : "btn btn-primary"}
+                htmlFor="upload-update"
               >
-                {Image
+                {imageUpdate
                   ? // <i className="fa fa-upload" aria-hidden="true"></i>
                     "Resim Yüklendi"
                   : // <i className="fa fa-upload" aria-hidden="true"></i>
-                    "Yeni Resim"}
+                    "Resim Yükle"}
               </label>
-              <img alt="" width={"50px"} src={Image} />
+              <img alt="" width={"50px"} src={imageUpdate} />
               <input
-                id="upload"
+                id="upload-update"
                 name="img"
                 onChange={onInputChange}
                 type="file"
@@ -212,15 +234,13 @@ const UpdateButton = ({product}) => {
               {errors.img && touched.img && errors.img}
             </div>
           </form>
-        )}
-      </Formik>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleSubmit}>
             Güncelle
           </Button>
           <Button variant="secondary" onClick={handleClose}>
-            İptal
+            Kapat
           </Button>
         </Modal.Footer>
       </Modal>

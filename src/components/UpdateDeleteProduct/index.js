@@ -1,5 +1,3 @@
-import axios from "axios";
-import { Formik } from "formik";
 import React, { useState } from "react";
 import { Card, Form, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useCategory } from "../../context/CategoryContext";
@@ -8,8 +6,7 @@ import UpdateButton from "../UpdateButton.js";
 
 const UpdateDeleteProduct = () => {
   const { categories } = useCategory();
-  const { categoryValue, setCategoryValue } = useCategory();
-  const { products, setProducts } = useProduct();
+  const { products } = useProduct();
   const [changeCategory, setChangeCategory] = useState();
 
   const selectChange = (e) => {

@@ -25,8 +25,7 @@ export const ProductProvider = ({ children }) => {
 
   return (
     <ProductContext.Provider value={values}>
-      {" "}
-      {children}{" "}
+      {children}
     </ProductContext.Provider>
   );
 };
