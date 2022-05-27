@@ -8,7 +8,16 @@ import { useProduct } from "../../context/ProductContext";
 const UpdateButton = ({ product }) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    values.name = "";
+    values.author = "";
+    values.publisher = "";
+    values.price = "";
+    values.img = "";
+    setImageUpdate("");
+    setProductValue(!productValue);
+  };
   const handleShow = () => setShow(true);
 
   const { categories } = useCategory();
@@ -38,16 +47,6 @@ const UpdateButton = ({ product }) => {
     });
   };
 
-  const onSubmitUpdate = (values) => {
-    console.log(
-      values.categoryId,
-      values.name,
-      values.author,
-      values.publisher,
-      values.price,
-    );
-
-  };
 
   const {
     values,
@@ -56,7 +55,6 @@ const UpdateButton = ({ product }) => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting,
   } = useFormik({
     initialValues: {
       categoryId: "",
@@ -68,24 +66,27 @@ const UpdateButton = ({ product }) => {
     },
 
     validate: (values) => {
-      const errors = {};
       if (!values.name) {
-        errors.name = "Alanı doldurun";
-      } else if (!values.categoryId) {
-        errors.categoryId = "Kategori Seçin";
-      } else if (values.categoryId === "Lütfen Kategori Seçin") {
-        errors.categoryId = "Kategori Seçin";
-      } else if (!values.author) {
-        errors.author = "Alanı doldurun";
-      } else if (!values.publisher) {
-        errors.publisher = "Alanı doldurun";
-      } else if (!values.price) {
-        errors.price = "Alanı doldurun";
-      } else if (!imageUpdate) {
-        errors.img = "Resim yükleyin";
+        values.name = product.name;
       }
-
-      return errors;
+      if (!values.categoryId) {
+        values.categoryId = product.categoryId;
+      }
+      if (values.categoryId === "Lütfen Kategori Seçin") {
+        values.categoryId = product.categoryId;
+      }
+      if (!values.author) {
+        values.author = product.author;
+      }
+      if (!values.publisher) {
+        values.publisher = product.publisher;
+      }
+      if (!values.price) {
+        values.price = product.price;
+      }
+      if (!imageUpdate) {
+        setImageUpdate(product.img)
+      }
     },
 
     onSubmit: (values, { setSubmitting }) => {
@@ -119,15 +120,6 @@ const UpdateButton = ({ product }) => {
           values.price = "";
           values.img = "";
         });
-
-      console.log(
-        values.categoryId,
-        values.name,
-        values.author,
-        values.publisher,
-        values.price,
-        imageUpdate
-      );
     },
   });
 
@@ -160,7 +152,7 @@ const UpdateButton = ({ product }) => {
             <br />
             <Form.Control
               type="text"
-              name="name"
+              name="name" 
               placeholder={product.name}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -189,7 +181,7 @@ const UpdateButton = ({ product }) => {
             {errors.publisher && touched.publisher && errors.publisher}
             <br />
             <Form.Control
-              type="number"
+              type={"number"}
               name="price"
               placeholder={product.price}
               onChange={handleChange}
@@ -217,9 +209,9 @@ const UpdateButton = ({ product }) => {
               >
                 {imageUpdate
                   ? // <i className="fa fa-upload" aria-hidden="true"></i>
-                    "Resim Yüklendi"
+                    "Resim Güncelle"
                   : // <i className="fa fa-upload" aria-hidden="true"></i>
-                    "Resim Yükle"}
+                    "Resim Güncelle"}
               </label>
               <img alt="" width={"50px"} src={imageUpdate} />
               <input

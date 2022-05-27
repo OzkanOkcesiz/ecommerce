@@ -1,0 +1,11 @@
+.product-content{
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap;
+
+    .card{
+        width: 9rem !important;
+        height: min-content;
+        margin: 0 20px;
+    }
+}

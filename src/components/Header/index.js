@@ -1,10 +1,13 @@
-import React from "react";
-import { Badge, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Badge, CloseButton, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { NavLink, Outlet } from "react-router-dom";
 import { useCategory } from "../../context/CategoryContext";
+import { useProduct } from "../../context/ProductContext";
 
 const Header = () => {
   const { categories } = useCategory();
+  const { cart, setCart } = useProduct();
 
   return (
     <div className="header">
@@ -19,8 +22,9 @@ const Header = () => {
                   style={({ isActive }) => ({
                     color: isActive ? "red" : "blue",
                   })}
+                  id={category.id}
                   key={category.id}
-                  to={`/Category/${category.categoryName} `}
+                  to={`/Category/${category.id} `}
                 >
                   {category.categoryName}
                 </NavLink>
@@ -47,19 +51,25 @@ const Header = () => {
               <NavDropdown
                 title={
                   <span>
-                    <i className="fa fa-shopping-cart cart-icon"></i>{" "}
-                    <Badge bg="success">0</Badge>{" "}
+                    <i className="fa fa-shopping-cart cart-icon"></i>
+                    <Badge bg="success">{cart.length}</Badge>
                   </span>
                 }
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action sadasd asdasd asd
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
+                {cart.map((cart) => (
+                  <div key={cart.product.id}>
+                    <span className="cart-img">
+                      <img src={cart.product.img} />
+                    </span>
+                    <span className="cart-name"> {cart.product.name} </span>
+                    <span> {` Adet:  ${cart.quantity} `}</span>
+                    <span className="cart-price">
+                      {`${(cart.product.price * cart.quantity).toFixed(2)} TL`}
+                    </span>
+                    <CloseButton />
+                  </div>
+                ))}
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
                   Separated link

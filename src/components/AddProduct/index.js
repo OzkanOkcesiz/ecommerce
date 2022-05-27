@@ -78,7 +78,7 @@ const AddProduct = () => {
           name: values.name,
           author: values.author,
           publisher: values.publisher,
-          price: values.price,
+          price: values.price.toFixed(2),
           img: image,
         })
         .then((res) => {
@@ -187,6 +187,22 @@ const AddProduct = () => {
                 "Resim Yükle"}
           </label>
           <img alt="" width={"50px"} src={image} />
+          {image ? (
+            <Button
+              className="btn btn-secondary"
+              onClick={() => {
+                values.name = "";
+                values.author = "";
+                values.publisher = "";
+                values.price = "";
+                values.img = "";
+                setImage("");
+              }}
+            >
+              İptal
+            </Button>
+          ) : null}
+
           <input
             id="upload"
             name="img"

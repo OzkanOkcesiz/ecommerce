@@ -16,12 +16,17 @@ export const CategoryProvider = ({ children }) => {
   }, [categoryValue]);
 
 
+
   const values = {
     categories,
     setCategories,
     categoryValue,
     setCategoryValue,
+
+
   };
+
+
 
   return (
     <CategoryContext.Provider value={values}>

@@ -6,6 +6,8 @@ const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [productValue, setProductValue] = useState(true);
+  const [cart, setCart] = useState([]);
+  const [cartValue, setCartValue] = useState(true);
 
   useEffect(() => {
     axios("http://localhost:3000/products")
@@ -21,12 +23,14 @@ export const ProductProvider = ({ children }) => {
     setProducts,
     productValue,
     setProductValue,
+    cart,
+    setCart,
+    cartValue,
+    setCartValue,
   };
 
   return (
-    <ProductContext.Provider value={values}>
-      {children}
-    </ProductContext.Provider>
+    <ProductContext.Provider value={values}>{children}</ProductContext.Provider>
   );
 };
 

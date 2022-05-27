@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useCategory } from "../../context/CategoryContext";
+import { Button, Form } from "react-bootstrap";
 
 const AddCategory = () => {
   const { categoryValue, setCategoryValue } = useCategory();
@@ -51,7 +52,7 @@ const AddCategory = () => {
   return (
     <div className={"add-category"}>
       <form onSubmit={handleSubmit}>
-        <input
+        <Form.Control
           type="text"
           name="category"
           placeholder="Kategori İsmi Girin"
@@ -63,9 +64,9 @@ const AddCategory = () => {
         {errors.category && touched.category && errors.category}
         <br />
         <br />
-        <button type="submit" disabled={isSubmitting}>
+        <Button type="submit" disabled={isSubmitting}>
           Ekle
-        </button>
+        </Button>
       </form>
     </div>
   );

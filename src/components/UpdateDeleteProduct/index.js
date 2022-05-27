@@ -1,16 +1,34 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Card, Form, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Card, Form, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
-import UpdateButton from "../UpdateButton.js";
+import UpdateButton from "../UpdateButton";
 
 const UpdateDeleteProduct = () => {
   const { categories } = useCategory();
   const { products } = useProduct();
   const [changeCategory, setChangeCategory] = useState();
+  const { productValue, setProductValue } = useProduct();
 
   const selectChange = (e) => {
     setChangeCategory(e.target.value);
+  };
+
+  const deleteProduct = (e) => {
+    axios
+      .delete(`http://localhost:3000/products/${e.target.id}`)
+      .then((res) => {
+        setProductValue(!productValue);
+        console.log(res);
+        
+      })
+      .catch((err) => {
+        setProductValue(!productValue);
+        console.log(err);
+        
+      });
+    console.log(e.target.id);
   };
 
   return (
@@ -44,13 +62,19 @@ const UpdateDeleteProduct = () => {
               <ListGroup className="list-group-flush">
                 <ListGroupItem>{product.author}</ListGroupItem>
                 <ListGroupItem>{product.publisher}</ListGroupItem>
-                <ListGroupItem>{product.price}</ListGroupItem>
+                <ListGroupItem>{product.price}<span>TL</span></ListGroupItem>
               </ListGroup>
               <Card.Body>
                 <Card.Link href="#">
                   <UpdateButton product={product} />
                 </Card.Link>
-                <Card.Link href="#">Sil</Card.Link>
+                <Button
+                  id={product.id}
+                  variant="danger"
+                  onClick={deleteProduct}
+                >
+                  Sil
+                </Button>
               </Card.Body>
             </Card>
           ))}

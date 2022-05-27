@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import { React } from "react";
+import { Button, Form } from "react-bootstrap";
 import { useCategory } from "../../context/CategoryContext";
 
 const UpdateCategory = () => {
@@ -68,7 +69,7 @@ const UpdateCategory = () => {
         </select>
         {errors.categoryId && touched.categoryId && errors.categoryId}
         <br />
-        <input
+        <Form.Control
           type="text"
           name="category"
           placeholder="Kategori İsmi Girin"
@@ -79,9 +80,9 @@ const UpdateCategory = () => {
         {errors.category && touched.category && errors.category}
         <br />
         <br />
-        <button type="submit" disabled={isSubmitting}>
+        <Button type="submit" disabled={isSubmitting}>
           Güncelle
-        </button>
+        </Button>
       </form>
     </div>
   );

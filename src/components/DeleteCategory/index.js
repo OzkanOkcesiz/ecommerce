@@ -41,6 +41,18 @@ const DeleteCategory = () => {
           console.log(err);
           setSubmitting(false);
         });
+        axios
+        .delete(`http://localhost:3000/products?categoryId=${values.categoryValue}`)
+        .then((res) => {
+          setCategoryValue(!categoryValue);
+          console.log(res);
+          setSubmitting(false);
+        })
+        .catch((err) => {
+          setCategoryValue(!categoryValue);
+          console.log(err);
+          setSubmitting(false);
+        });
     },
   });
 
