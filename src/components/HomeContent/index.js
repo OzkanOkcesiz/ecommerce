@@ -49,190 +49,360 @@ const HomeContent = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      Çok Satanlar
+
       {/* Card  */}
+
       <div className="home-cards-1">
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
+        </Card>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
+          </ListGroup>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
       </div>
+
       <div className="home-cards-2">
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
-        <Card style={{ width: "13rem" }}>
-          <Card.Img variant="top" src="../images/products/001.jpg" />
-          <Card.Body>
-            <Card.Title>Kitap İsmi</Card.Title>
-          </Card.Body>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Yazar İsmi</ListGroupItem>
-            <ListGroupItem>Yayın Evi</ListGroupItem>
-            <ListGroupItem>Fiyat</ListGroupItem>
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Sepete Ekle</Card.Link>
-            <Card.Link href="#">Hemen Al</Card.Link>
-          </Card.Body>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
+        </Card>
+
+        <Card>
+          <img
+            className="card-image"
+            alt=""
+            src={"../images/products/001.jpg"}
+          />
+          <Card.Title>{"Kitap İsmi"}</Card.Title>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem className="card-author">
+              {"Yazar İsmi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-publisher">
+              {"Yayın Evi"}
+            </ListGroupItem>
+            <ListGroupItem className="card-price">
+              {"Fiyat"}
+              <span>TL</span>
+            </ListGroupItem>
+          </ListGroup>
+
+          <button className="card-button" variant="success">
+            Sepete Ekle
+          </button>
         </Card>
       </div>
     </div>

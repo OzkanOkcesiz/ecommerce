@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-import { Badge, CloseButton, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import { toHaveClass } from "@testing-library/jest-dom/dist/matchers";
+import { click } from "@testing-library/user-event/dist/click";
+import React, { useState } from "react";
+import { Badge, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
 import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
@@ -9,16 +10,23 @@ const Header = () => {
   const { categories } = useCategory();
   const { cart, setCart } = useProduct();
 
+  const removeProduct = (product) => {
+    const newCart = cart.filter((c) => c.product.id !== product.id);
+    setCart(newCart);
+  };
+  
+
   return (
     <div className="header">
       <Navbar expand="lg">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink to="/">E-COMMERCE</NavLink>
+            <NavLink className="header-title" to="/">E-COMMERCE</NavLink>
 
             <div className="categories">
               {categories.map((category) => (
                 <NavLink
+                className="category"
                   style={({ isActive }) => ({
                     color: isActive ? "red" : "blue",
                   })}
@@ -32,7 +40,7 @@ const Header = () => {
             </div>
 
             <div className="cart-box">
-              <NavLink
+              {/* <NavLink
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "blue",
                 })}
@@ -47,33 +55,60 @@ const Header = () => {
                 to="/Login"
               >
                 Giriş
-              </NavLink>
+              </NavLink> */}
               <NavDropdown
+                show={ !cart.length? false : undefined}
+                className="cart-dropdown"
                 title={
                   <span>
                     <i className="fa fa-shopping-cart cart-icon"></i>
-                    <Badge bg="success">{cart.length}</Badge>
+                    <Badge>{cart.length}</Badge>
                   </span>
                 }
-                id="basic-nav-dropdown"
+                id={"basic-nav-dropdown"}
               >
+                {/* <div className="dropdown-menu show"></div> */}
                 {cart.map((cart) => (
-                  <div key={cart.product.id}>
-                    <span className="cart-img">
-                      <img src={cart.product.img} />
-                    </span>
-                    <span className="cart-name"> {cart.product.name} </span>
-                    <span> {` Adet:  ${cart.quantity} `}</span>
-                    <span className="cart-price">
-                      {`${(cart.product.price * cart.quantity).toFixed(2)} TL`}
-                    </span>
-                    <CloseButton />
+                  <div className="cart-item" key={cart.product.id}>
+                    <div className="cart-holder flex-start">
+                      <span className="cart-image">
+                        <img
+                          className="cart-item-image"
+                          alt=""
+                          src={cart.product.img}
+                        />
+                      </span>
+                      <div>
+                        <span className="cart-item-name">
+                          {cart.product.name}
+                        </span>
+                        <span className="cart-item-quantity">
+                          {` Adet:  ${cart.quantity} `}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="cart-holder flex-end">
+                      <span className="cart-item-price">
+                        {`${(cart.product.price * cart.quantity).toFixed(
+                          2
+                        )} TL`}
+                      </span>
+                      <button
+                        className="cart-item-remove"
+                        onClick={() => removeProduct(cart.product)}
+                      >
+                        <i className="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </div>
                   </div>
                 ))}
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
+                <NavLink
+                  className="cart-btn"
+                  to="CartDetail"
+                >
+                  Sepete Git
+                </NavLink>
               </NavDropdown>
             </div>
           </Nav>

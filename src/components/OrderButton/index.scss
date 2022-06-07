@@ -1,0 +1,37 @@
+.input-name-surname{
+    display: flex;
+    input{
+        outline: none;
+        box-shadow: none;
+
+        &:focus{
+            box-shadow: none;
+        }
+    }
+}
+
+.form-control{
+    outline: none;
+    box-shadow: none !important;
+
+    &:focus{
+        box-shadow: none !important;
+    }
+}
+
+.order-btn{
+    display: block;
+    margin: 10px auto;
+    padding: 5px;
+    border: 1px solid #f27a1a;
+    border-radius: 10px;
+    background: #fff;
+    color: #f27a1a;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+        background: #f27a1a;
+        color: #fff;
+        border: 1px solid #fff;
+    }
+}

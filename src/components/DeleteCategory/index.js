@@ -68,8 +68,7 @@ const DeleteCategory = () => {
           <option defaultValue={"selected"}>Lütfen Kategori Seçin</option>
           {categories.map((category) => (
             <option value={category.id} key={category.id}>
-              {" "}
-              {category.categoryName}{" "}
+              {category.categoryName}
             </option>
           ))}
         </select>

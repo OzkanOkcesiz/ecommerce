@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
 
 const Category = () => {
@@ -18,41 +17,39 @@ const Category = () => {
     } else {
       setCart([...cart, { product, quantity: 1 }]);
     }
-    console.log(product.id);
-    console.log(addedItem);
   };
 
-  console.log(cart);
-
   return (
-    <div className="product-content">
+    <div className="productContainer">
       {products
         .filter((product) => product.categoryId === params.categoryId)
         .map((product) => (
-          <Card key={product.id} id={product.id} style={{ width: "13rem" }}>
-            <Card.Img variant="top" width={"50px"} src={product.img} />
-            <Card.Body>
-              <Card.Title>{product.name}</Card.Title>
-            </Card.Body>
+          <Card key={product.id} id={product.id}>
+            <img className="card-image" alt="" src={product.img} />
+            <Card.Title>{product.name}</Card.Title>
             <ListGroup className="list-group-flush">
-              <ListGroupItem>{product.author}</ListGroupItem>
-              <ListGroupItem>{product.publisher}</ListGroupItem>
-              <ListGroupItem>
+              <ListGroupItem className="card-author">
+                {product.author}
+              </ListGroupItem>
+              <ListGroupItem className="card-publisher">
+                {product.publisher}
+              </ListGroupItem>
+              <ListGroupItem className="card-price">
                 {product.price}
                 <span>TL</span>
               </ListGroupItem>
             </ListGroup>
-            <Card.Body>
-              <Button
-                onClick={() => {
-                  addToCart(product);
-                }}
-                id={product.id}
-                variant="success"
-              >
-                Sepete Ekle
-              </Button>
-            </Card.Body>
+
+            <button
+              className="card-button"
+              onClick={() => {
+                addToCart(product);
+              }}
+              id={product.id}
+              variant="success"
+            >
+              Sepete Ekle
+            </button>
           </Card>
         ))}
     </div>

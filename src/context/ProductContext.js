@@ -8,6 +8,8 @@ export const ProductProvider = ({ children }) => {
   const [productValue, setProductValue] = useState(true);
   const [cart, setCart] = useState([]);
   const [cartValue, setCartValue] = useState(true);
+  const [orders, setOrders] = useState([]);
+  const [orderValue, setOrderValue] = useState(true);
 
   useEffect(() => {
     axios("http://localhost:3000/products")
@@ -16,6 +18,14 @@ export const ProductProvider = ({ children }) => {
       })
       .catch((err) => console.log("Error!!!"));
   }, [productValue]);
+
+  useEffect(() => {
+    axios("http://localhost:3000/orders")
+      .then((res) => {
+        setOrders(res.data);
+      })
+      .catch((err) => console.log("Error!!!"));
+  }, [orderValue]);
 
 
   const values = {
@@ -27,6 +37,10 @@ export const ProductProvider = ({ children }) => {
     setCart,
     cartValue,
     setCartValue,
+    orders,
+    setOrders,
+    orderValue,
+    setOrderValue,
   };
 
   return (

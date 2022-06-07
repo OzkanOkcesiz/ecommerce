@@ -1,0 +1,58 @@
+.order-summary-container{
+    border: 2px solid #d7d7d7;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+
+    .order-summary-header{
+        text-align: center;
+        margin: 5px;
+        font-size: 18px;
+        font-weight: 700;
+
+    }
+
+
+    .order-summary-box{
+        display: flex;
+
+        .order-summary-content{
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+
+            span {
+                margin: 5px;
+            }
+        }
+
+        .order-summary-price{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            span {
+                margin: 5px;
+            }
+        }
+    }
+
+    .order-summary-btn{
+        display: block;
+        margin: 10px auto;
+        padding: 5px;
+        border: 1px solid #f27a1a;
+        border-radius: 10px;
+        background: #fff;
+        color: #f27a1a;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+            background: #f27a1a;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    }
+}

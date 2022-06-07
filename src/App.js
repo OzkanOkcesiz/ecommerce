@@ -7,25 +7,33 @@ import Category from "./components/Category";
 import Panel from "./components/Panel";
 import { CategoryProvider } from "./context/CategoryContext";
 import { ProductProvider } from "./context/ProductContext";
-
+import CartDetail from "./components/CartDetail";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 // const Home = lazy(() => import("./components/Home"))
 // const Category = lazy(() => import("./components/Category"))
 
 function App() {
   return (
-    <CategoryProvider>
-      <ProductProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/*" element={<Home />}>
-              <Route path="/*" element={<HomeContent />} />
+    <>
+      <CategoryProvider>
+        <ProductProvider>
+          <BrowserRouter>
+            <Header />
+
+            <Routes>
+
+              <Route path="/*" element={<HomeContent/>} />
+              <Route path="CartDetail" element={<CartDetail />} />
               <Route path="Category/:categoryId" element={<Category />} />
-            </Route>
-            <Route path="/Panel" element={<Panel />} />
-          </Routes>
-        </BrowserRouter>
-      </ProductProvider>
-    </CategoryProvider>
+
+              <Route path="/Panel" element={<Panel />} />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        </ProductProvider>
+      </CategoryProvider>
+    </>
   );
 }
 
