@@ -1,5 +1,96 @@
 .panel {
-    margin-top: 10vh;
+
+    .panel-navbar{
+        padding: 0;
+
+        .panel-header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            background-color: #030f3d;
+
+            .panel-header-title{
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff !important;
+            }
+
+            .panel-header-dropdown{
+                background: fixed;
+                border: none;
+
+                &:focus{
+                    background: fixed;
+                    border: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .panel-content{
+        display: flex;
+        justify-content: space-between;
+
+        .panel-sidebar{
+            width: 20%;
+            background-color: #030f3dc2;
+            border-right: 2px solid #030f3d;
+            padding: 1rem;
+            min-height: 91vh;
+
+            .panel-sidebar-title{
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff !important;
+            }
+
+            .panel-sidebar-item{
+                font-size: 1rem;
+                font-weight: bold;
+                color: #fff !important;
+                padding: 0.5rem 2rem;
+                border-bottom: 2px solid #030f3d;
+                cursor: pointer;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                transition: all 0.3s ease-in-out;   
+
+                &:focus{
+                    background: fixed;
+                    border: none;
+                    box-shadow: none;
+                    border-bottom: 2px solid #030f3d;
+                    color: #030f3d !important;
+                }
+
+            }
+
+            .panel-sidebar-accordion{
+                padding: 0;
+                margin: 0;
+                border: none;
+                background: none;
+
+
+            }
+
+            .panel-content-box{
+                width: 80%;
+                background-color: #fff;
+                padding: 1rem;
+            }
+
+
+        }
+    }
+
+
+    
 
     .panel-order-btn{
         text-align: start;
@@ -26,3 +117,7 @@
     }
 
 }
+
+@import "../Dashboard/index.scss",
+"../DetailButton/index.scss",
+"../Orders/index.scss"

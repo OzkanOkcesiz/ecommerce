@@ -1,0 +1,102 @@
+.detail-button{
+
+    .detail-btn{
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid #fff;
+        background: #030f3d;
+        color: #fff;
+        font-weight: 400;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+            background: transparent;
+            color: #030f3d;
+            border: 2px solid #030f3d;
+        }
+    }
+}
+
+.modal-header{
+    padding-bottom: 0;
+    border: none;
+
+    .btn-close{
+
+        &:focus{
+            box-shadow: none;
+        }
+    }
+}
+
+.modal-body{
+    padding-bottom: 0 !important;
+
+    .customer-info{
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dee2e6;
+    
+        .customer-adres{
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+    
+        .customer-contact{
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+    }
+    
+    .customer-products{
+        thead{
+    
+            .customer-product-price{
+                white-space: nowrap;
+            }   
+        }
+    
+        tbody{
+            align-items: center;
+    
+            .customer-product-price{
+                white-space: nowrap;
+            }
+        }
+    
+        .customer-total{
+            font-weight: bold;
+    
+            .customer-product-price{
+                white-space: nowrap;
+            }
+    
+            tr{
+                td{
+                    border-bottom: none;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.modal-footer{
+
+    button{
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid #fff;
+        background: #030f3d;
+        color: #fff;
+        font-weight: 400;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+            background: transparent;
+            color: #030f3d;
+            border: 2px solid #030f3d;
+        }
+    }
+}
+

@@ -3,7 +3,10 @@ import {
   Accordion,
   Button,
   Col,
+  Dropdown,
   ListGroup,
+  Nav,
+  Navbar,
   NavLink,
   Row,
   Tab,
@@ -16,39 +19,54 @@ import UpdateDeleteProduct from "../UpdateDeleteProduct";
 import { Link } from "react-router-dom";
 import { useProduct } from "../../context/ProductContext";
 import axios from "axios";
+import Dashboard from "../Dashboard";
+import Orders from "../Orders";
 
 const Panel = () => {
-  const { orders, setOrders } = useProduct();
-  const { orderValue, setOrderValue } = useProduct();
-
-  const removeOrder = (id) => {
-    axios
-        .delete(`http://localhost:3000/orders/${id}`)
-        .then((res) => {
-          setOrderValue(!orderValue);
-          console.log(res);
-        })
-        .catch((err) => {
-          setOrderValue(!orderValue);
-          console.log(err);
-        });
-  }
-  
   return (
-    <div className="container panel">
-      <Link to="/">E-COMMERCE</Link>
-      <Tab.Container id="list-group-tabs-example" defaultActiveKey="#PanelOrders">
-        <Row>
-          <Col sm={3}>
-            <Accordion>
-              <NavLink href="#PanelOrders" className="panel-order-btn">
-                Siparişler
-              </NavLink>
+    <div className="panel">
+      <Navbar className="panel-navbar" expand="lg">
+        <Navbar.Collapse>
+          <Nav className="me-auto panel-header">
+            <NavLink className="panel-header-title" to="/">
+              E-COMMERCE
+            </NavLink>
+            <Dropdown>
+              <Dropdown.Toggle
+                className="panel-header-dropdown"
+                id="dropdown-basic"
+              >
+                <i className="fa-solid fa-user"></i> Admin
+              </Dropdown.Toggle>
+            </Dropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+
+      <Tab.Container defaultActiveKey="#Dashboard">
+        <div className="panel-content">
+          <Col className="panel-sidebar" sm={2}>
+            <NavLink href="#Dashboard" className="panel-sidebar-item">
+              Dashboard <i className="fa-solid fa-chart-line"></i>
+            </NavLink>
+            <NavLink href="#PanelOrders" className="panel-sidebar-item">
+              Siparişler <i className="fa-solid fa-cart-arrow-down"></i>
+            </NavLink>
+            <NavLink href="#PanelOrders" className="panel-sidebar-item">
+              Kategori <i className="fa-solid fa-tags"></i>
+            </NavLink>
+            <NavLink href="#PanelOrders" className="panel-sidebar-item">
+              Ürünler <i className="fa-solid fa-tag"></i>
+            </NavLink>
+            <NavLink href="#PanelOrders" className="panel-sidebar-item">
+              Anasayfa <i className="fa-solid fa-house"></i>
+            </NavLink>
+            {/* <Accordion alwaysOpen>
               <Accordion.Item eventKey="0">
-                <Accordion.Header>Kategori</Accordion.Header>
-                <Accordion.Body>
+                <Accordion.Header className="panel-sidebar-accordion">Kategori</Accordion.Header>
+                <Accordion.Body className="panel-sidebar-item">
                   <ListGroup>
-                    <ListGroup.Item action href="#AddCategory">
+                    <ListGroup.Item className="panel-sidebar-accordion-item" action href="#AddCategory">
                       Kategori Ekle
                     </ListGroup.Item>
                     <ListGroup.Item action href="#UpdateCategory">
@@ -73,41 +91,15 @@ const Panel = () => {
                   </ListGroup>
                 </Accordion.Body>
               </Accordion.Item>
-            </Accordion>
+            </Accordion> */}
           </Col>
-          <Col className="content-box" sm={9}>
+          <Col className="panel-content-box" sm={9}>
             <Tab.Content>
+              <Tab.Pane eventKey="#Dashboard">
+                <Dashboard />
+              </Tab.Pane>
               <Tab.Pane eventKey="#PanelOrders">
-                <table className="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col">Ad - Soyad</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Telefon</th>
-                      <th scope="col">Adres</th>
-                      <th scope="col">Tutar</th>
-                      <th scope="col">Sipariş Sil</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      orders.map((order) => (
-                        <tr key={order.id}>
-                        <th scope="row">{order.id}</th>
-                        <td>{order.customerName} {order.customerSurname}</td>
-                        <td>{order.customerEmail}</td>
-                        <td>{order.customerPhone}</td>
-                        <td>{order.customerAddress}</td>
-                        <td>{`${order.customerProducts.reduce((a, b) => a + b.productPrice * b.productQuantity, 0).toFixed(2)} TL`}</td>
-                        <td onClick={() => {
-                          removeOrder(order.id);
-                        }}><Button>Sil</Button></td>
-                      </tr>
-                      ))
-                    }
-                  </tbody>
-                </table>
+                <Orders />
               </Tab.Pane>
               <Tab.Pane eventKey="#AddCategory">
                 <AddCategory />
@@ -126,7 +118,7 @@ const Panel = () => {
               </Tab.Pane>
             </Tab.Content>
           </Col>
-        </Row>
+        </div>
       </Tab.Container>
     </div>
   );

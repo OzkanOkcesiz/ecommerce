@@ -129,46 +129,36 @@
   ],
   "orders": [
     {
-      "customerName": "Ozkan",
-      "customerSurname": "Okcesiz",
+      "customerName": "Özkan",
+      "customerSurname": "ÖKÇESİZ",
       "customerEmail": "ozkan.okcesiz@gmail.com",
       "customerPhone": "0525 252 25 25",
-      "customerAddress": "asdas asdasd asdasd  asd Kayseri",
+      "customerAddress": "asdas asdasd asdasd  asd İstanbul",
       "customerProducts": [
         {
-          "productName": "Tarih-1",
+          "productName": "Tarih-6",
           "productAuthor": "Atatürk",
-          "productPrice": "26.00",
+          "productPrice": "33.00",
           "productQuantity": 2
         },
         {
-          "productName": "Tarih-2",
+          "productName": "Tarih-5",
           "productAuthor": "Atatürk",
-          "productPrice": "28.00",
+          "productPrice": "26.00",
+          "productQuantity": 1
+        },
+        {
+          "productName": "Tarih-4",
+          "productAuthor": "Atatürk",
+          "productPrice": "27.75",
           "productQuantity": 1
         },
         {
           "productName": "Tarih-3",
           "productAuthor": "Atatürk",
           "productPrice": "25.25",
-          "productQuantity": 2
+          "productQuantity": 1
         },
-        {
-          "productName": "Tarih-4",
-          "productAuthor": "Atatürk",
-          "productPrice": "27.75",
-          "productQuantity": 2
-        }
-      ],
-      "id": 1
-    },
-    {
-      "customerName": "Ramazan",
-      "customerSurname": "Avan",
-      "customerEmail": "ramazan.avan@gmail.com",
-      "customerPhone": "0525 252 25 25",
-      "customerAddress": "sadasd dsaadsa dsasd  sadasdsa Kayseri",
-      "customerProducts": [
         {
           "productName": "Tarih-1",
           "productAuthor": "Atatürk",
@@ -176,19 +166,13 @@
           "productQuantity": 1
         },
         {
-          "productName": "Tarih-4",
+          "productName": "Tarih-2",
           "productAuthor": "Atatürk",
-          "productPrice": "27.75",
+          "productPrice": "28.00",
           "productQuantity": 1
-        },
-        {
-          "productName": "Tarih-6",
-          "productAuthor": "Atatürk",
-          "productPrice": "33.00",
-          "productQuantity": 5
         }
       ],
-      "id": 2
+      "id": 1
     }
   ]
 }

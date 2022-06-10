@@ -29,20 +29,19 @@ const Footer = () => {
       </ul>
 
       <ul className="right-footer">
-        İletişim
         <li>
           <Link to={"/"} className="icon">
-            <i className="fa fa-instagram" aria-hidden="true"></i>
+          <i className="fa-brands fa-instagram"></i>
           </Link>
         </li>
         <li>
           <Link to={"/"} className="icon">
-            <i className="fa fa-twitter" aria-hidden="true"></i>
+          <i class="fa-brands fa-twitter"></i>
           </Link>
         </li>
         <li>
           <Link to={"/"} className="icon">
-            <i className="fa fa-facebook" aria-hidden="true"></i>
+          <i className="fa-brands fa-facebook-f"></i>
           </Link>
         </li>
         <li>

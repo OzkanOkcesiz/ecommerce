@@ -4,6 +4,71 @@
     border-top: 2px solid #d7d0d0;
     padding: 20px;
 
-    .inst{
+    .left-footer{
+        padding: 0;
+        margin: 0;
+
+        li{
+            list-style: none;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+            a{
+                color: #959595;
+                text-decoration: none;
+
+                &:hover{
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .mid-footer{
+        padding: 0;
+        margin: 0;
+
+        li{
+            list-style: none;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+
+            a{
+                color: #959595;
+                text-decoration: none;
+
+                &:hover{
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .right-footer{
+        display: flex;
+        padding: 0;
+        margin: 0;
+
+        li{
+            list-style: none;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin: 10px;
+            transition: 0.3s;
+                
+            &:hover{
+                transform: scale(1.1);
+            }
+
+            
+
+            a{
+                color: #959595;
+                text-decoration: none;
+                
+                &:hover{
+                    color: #000;
+                }
+            }
+        }
     }
 }

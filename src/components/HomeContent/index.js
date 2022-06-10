@@ -9,7 +9,7 @@ const HomeContent = () => {
     setIndex(selectedIndex);
   };
   return (
-    <div>
+    <div className="homecontent-cotainer">
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
           <img

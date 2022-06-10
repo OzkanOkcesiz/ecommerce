@@ -1,6 +1,3 @@
-import { toHaveClass } from "@testing-library/jest-dom/dist/matchers";
-import { click } from "@testing-library/user-event/dist/click";
-import React, { useState } from "react";
 import { Badge, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
 import { useCategory } from "../../context/CategoryContext";
@@ -14,22 +11,20 @@ const Header = () => {
     const newCart = cart.filter((c) => c.product.id !== product.id);
     setCart(newCart);
   };
-  
 
   return (
     <div className="header">
       <Navbar expand="lg">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink className="header-title" to="/">E-COMMERCE</NavLink>
+            <NavLink className="header-title" to="/">
+              E-COMMERCE
+            </NavLink>
 
             <div className="categories">
               {categories.map((category) => (
                 <NavLink
-                className="category"
-                  style={({ isActive }) => ({
-                    color: isActive ? "red" : "blue",
-                  })}
+                  className="category"
                   id={category.id}
                   key={category.id}
                   to={`/Category/${category.id} `}
@@ -57,7 +52,7 @@ const Header = () => {
                 Giriş
               </NavLink> */}
               <NavDropdown
-                show={ !cart.length? false : undefined}
+                show={!cart.length ? false : undefined}
                 className="cart-dropdown"
                 title={
                   <span>
@@ -103,10 +98,7 @@ const Header = () => {
                     </div>
                   </div>
                 ))}
-                <NavLink
-                  className="cart-btn"
-                  to="CartDetail"
-                >
+                <NavLink className="cart-btn" to="/CartDetail">
                   Sepete Git
                 </NavLink>
               </NavDropdown>
