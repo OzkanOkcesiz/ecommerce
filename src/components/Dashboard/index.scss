@@ -1,6 +1,9 @@
 .dashboard-content{
 
     .chart-content{
+        display: flex;
+        justify-content: center;
+        
         .chart-bar{
             width: 50rem;
         }

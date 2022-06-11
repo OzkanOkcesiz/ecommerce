@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import { React } from "react";
-import { Button, Form } from "react-bootstrap";
+import { React, useState } from "react";
+import { Form, Modal } from "react-bootstrap";
 import { useCategory } from "../../context/CategoryContext";
 
-const UpdateCategory = () => {
-  const { categories } = useCategory();
+const UpdateCategory = ({category}) => {
   const { categoryValue, setCategoryValue } = useCategory();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const {
     errors,
@@ -18,22 +21,20 @@ const UpdateCategory = () => {
   } = useFormik({
     initialValues: {
       category: "",
-      categoryId: "",
     },
 
     validate: (values) => {
       const errors = {};
       if (!values.category) {
         errors.category = "Alanı doldurun";
-      } else if (values.categoryId === "Lütfen Kategori Seçin") {
-        errors.categoryId = "Kategori Seçin";
       }
       return errors;
     },
 
     onSubmit: (values, { setSubmitting }) => {
+      console.log(values.category);
       axios
-        .put(`http://localhost:3000/categories/${values.categoryId}`, {
+        .put(`http://localhost:3000/categories/${category.id}`, {
           categoryName: values.category,
         })
         .then((res) => {
@@ -53,37 +54,36 @@ const UpdateCategory = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <select
-          name={"categoryId"}
-          onChange={handleChange}
-          className="form-select"
-        >
-          <option defaultValue={"selected"}>Lütfen Kategori Seçin</option>
-          {categories.map((category) => (
-            <option value={category.id} key={category.id}>
-              {" "}
-              {category.categoryName}{" "}
-            </option>
-          ))}
-        </select>
-        {errors.categoryId && touched.categoryId && errors.categoryId}
-        <br />
-        <Form.Control
-          type="text"
-          name="category"
-          placeholder="Kategori İsmi Girin"
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        <br />
-        {errors.category && touched.category && errors.category}
-        <br />
-        <br />
-        <Button type="submit" disabled={isSubmitting}>
-          Güncelle
-        </Button>
-      </form>
+      <button  className="update-btn" onClick={handleShow}>
+      <i class="fa-solid fa-pen-to-square"></i>
+      </button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <div>Kategori Düzenle</div>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={handleSubmit}>
+            <Form.Control
+              type="text"
+              name="category"
+              placeholder="Kategori İsmi Girin"
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+
+            {errors.category && touched.category && errors.category}
+            <br />
+            <button id="category-modal-btn" type="submit" disabled={isSubmitting}>
+              Düzenle
+            </button>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button onClick={handleClose}>Kapat</button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -47,6 +47,22 @@
             font-weight: 600;
         }
     }
+
+    #category-modal-btn{
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid #fff;
+        background: #030f3d;
+        color: #fff;
+        font-weight: 400;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+            background: transparent;
+            color: #030f3d;
+            border: 2px solid #030f3d;
+        }
+    }
     
     .customer-products{
         thead{

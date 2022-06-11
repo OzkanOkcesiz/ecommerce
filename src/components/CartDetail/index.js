@@ -18,9 +18,9 @@ const CartDetail = () => {
       <Header />
       <div className="cart-detail-container">
         <div className="cart-detail-box">
-          {cart.map((cart) => (
-            <div className="cart-item-box col-9" key={cart.product.id}>
-              <div className="cart-item">
+          <div className="cart-item-box col-9">
+            {cart.map((cart) => (
+              <div key={cart.product.id} className="cart-item">
                 <div className="cart-item-image">
                   <img alt="" src={cart.product.img} />
                 </div>
@@ -47,8 +47,9 @@ const CartDetail = () => {
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
           <OrderSummary />
         </div>
       </div>

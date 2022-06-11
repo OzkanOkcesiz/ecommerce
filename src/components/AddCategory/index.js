@@ -60,13 +60,11 @@ const AddCategory = () => {
           onBlur={handleBlur}
           value={values.category}
         />
-        <br />
         {errors.category && touched.category && errors.category}
         <br />
-        <br />
-        <Button type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting}>
           Ekle
-        </Button>
+        </button>
       </form>
     </div>
   );

@@ -10,15 +10,16 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin: 10px;
-            border: 2px solid rgb(215, 215, 215);
-            border-radius: 10px;
+
     
             .cart-item {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 padding: 10px;
+                margin: 10px;
+                border: 2px solid rgb(215, 215, 215);
+                border-radius: 10px;
     
     
                 .cart-item-image {
@@ -54,10 +55,15 @@
                     margin: 10px;
     
                     button {
-                        font-size: 25px;
+                        font-size: 18px;
                         border: none;
                         background: none;
-                        color: #c2353590;
+                        color: #cb1717de;
+                        transition: all 0.3s ease-in-out;
+
+                        &:hover{
+                            transform: scale(1.2);
+                        }
                     }
                 }
             }

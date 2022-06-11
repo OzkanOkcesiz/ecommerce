@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Accordion,
   Button,
   Col,
   Dropdown,
@@ -13,7 +12,6 @@ import {
 } from "react-bootstrap";
 import AddCategory from "../AddCategory";
 import AddProduct from "../AddProduct";
-import DeleteCategory from "../DeleteCategory";
 import UpdateCategory from "../UpdateCategory";
 import UpdateDeleteProduct from "../UpdateDeleteProduct";
 import { Link } from "react-router-dom";
@@ -21,6 +19,7 @@ import { useProduct } from "../../context/ProductContext";
 import axios from "axios";
 import Dashboard from "../Dashboard";
 import Orders from "../Orders";
+import PanelCategories from "../PanelCategories";
 
 const Panel = () => {
   return (
@@ -52,7 +51,7 @@ const Panel = () => {
             <NavLink href="#PanelOrders" className="panel-sidebar-item">
               Siparişler <i className="fa-solid fa-cart-arrow-down"></i>
             </NavLink>
-            <NavLink href="#PanelOrders" className="panel-sidebar-item">
+            <NavLink href="#Categories" className="panel-sidebar-item">
               Kategori <i className="fa-solid fa-tags"></i>
             </NavLink>
             <NavLink href="#PanelOrders" className="panel-sidebar-item">
@@ -61,37 +60,6 @@ const Panel = () => {
             <NavLink href="#PanelOrders" className="panel-sidebar-item">
               Anasayfa <i className="fa-solid fa-house"></i>
             </NavLink>
-            {/* <Accordion alwaysOpen>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header className="panel-sidebar-accordion">Kategori</Accordion.Header>
-                <Accordion.Body className="panel-sidebar-item">
-                  <ListGroup>
-                    <ListGroup.Item className="panel-sidebar-accordion-item" action href="#AddCategory">
-                      Kategori Ekle
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="#UpdateCategory">
-                      Kategori Güncelle
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="#DeleteCategory">
-                      Kategori Sil
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>Ürün</Accordion.Header>
-                <Accordion.Body>
-                  <ListGroup>
-                    <ListGroup.Item action href="#AddProduct">
-                      Ürün Ekle
-                    </ListGroup.Item>
-                    <ListGroup.Item action href="#UpdateDeleteProduct">
-                      Ürün Güncelle / Sil
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion> */}
           </Col>
           <Col className="panel-content-box" sm={9}>
             <Tab.Content>
@@ -101,14 +69,8 @@ const Panel = () => {
               <Tab.Pane eventKey="#PanelOrders">
                 <Orders />
               </Tab.Pane>
-              <Tab.Pane eventKey="#AddCategory">
-                <AddCategory />
-              </Tab.Pane>
-              <Tab.Pane eventKey="#UpdateCategory">
-                <UpdateCategory />
-              </Tab.Pane>
-              <Tab.Pane eventKey="#DeleteCategory">
-                <DeleteCategory />
+              <Tab.Pane eventKey="#Categories">
+              <PanelCategories />
               </Tab.Pane>
               <Tab.Pane eventKey="#AddProduct">
                 <AddProduct />

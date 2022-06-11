@@ -79,18 +79,15 @@
 
             }
 
-            .panel-content-box{
-                width: 80%;
-                background-color: #fff;
-                padding: 1rem;
-            }
+        }
 
-
+        .panel-content-box{
+            width: 80%;
+            background-color: #fff;
+            padding: 1rem;
         }
     }
 
-
-    
 
     .panel-order-btn{
         text-align: start;
@@ -120,4 +117,5 @@
 
 @import "../Dashboard/index.scss",
 "../DetailButton/index.scss",
-"../Orders/index.scss"
+"../Orders/index.scss",
+"../PanelCategories/index.scss"

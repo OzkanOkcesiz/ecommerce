@@ -6,7 +6,7 @@ import OrderButton from "../OrderButton";
 const OrderSummary = () => {
   const { cart, setCart } = useProduct();
   return (
-    <div className="order-summary-container col-2">
+    <div className="order-summary-container">
       <div className="order-summary-header">Sipariş Özeti</div>
       <div className="order-summary-box">
         <div className="order-summary-content">
