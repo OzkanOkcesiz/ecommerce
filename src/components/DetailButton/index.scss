@@ -1,18 +1,14 @@
 .detail-button{
 
     .detail-btn{
-        padding: 5px;
-        border-radius: 5px;
-        border: 2px solid #fff;
-        background: #030f3d;
-        color: #fff;
-        font-weight: 400;
+        border: none;
+        font-size: 18px;
+        background: transparent;
         transition: all 0.3s ease-in-out;
+        margin-left: 10px;
 
         &:hover{
-            background: transparent;
-            color: #030f3d;
-            border: 2px solid #030f3d;
+            transform: scale(1.2);
         }
     }
 }
@@ -91,6 +87,43 @@
                 td{
                     border-bottom: none;
                     padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    #update-form{
+        .label-update-box{
+            display: flex;
+            justify-content: center;
+
+            .image-update-label-empty{
+                display: flex;
+                justify-content: center;
+                font-size: 20px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                padding: 10px;
+                width: 50px;
+
+                &:hover{
+                    transform: scale(1.2);
+                }
+            }
+
+            .close-update-btn{
+                display: flex;
+                border: none;
+                background: transparent;
+                font-size: 20px;
+                margin-left: 10px;
+
+                i {
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover{
+                        transform: scale(1.2);
+                    }
                 }
             }
         }

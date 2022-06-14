@@ -1,0 +1,226 @@
+.panel-products{
+    margin-top: 10px;
+
+    .panel-products-title{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .products-content{
+        display: flex;
+        justify-content: space-between;
+
+        h5{
+            text-align: center;
+        }
+
+        .add-product{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #dedddd;
+            padding: 20px;
+            border-radius: 10px;
+        
+            form{
+
+                select{
+
+                    &:focus{
+                        box-shadow: none;
+                    }
+                }
+
+                input{
+                    margin-bottom: 5px;
+                }
+
+                .label-box{
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 20px;
+
+                    .image-label-empty{
+                        display: flex;
+                        width: 50px;
+                        justify-content: center;
+                        font-size: 20px;
+                        cursor: pointer;
+                        transition: all 0.3s ease-in-out;
+
+                        &:hover{
+                            transform: scale(1.2);
+                        }
+                    }
+
+                    .close-btn{
+                        display: flex;
+                        border: none;
+                        background: transparent;
+                        font-size: 20px;
+                        margin-left: 10px;
+
+                        i {
+                            transition: all 0.3s ease-in-out;
+        
+                            &:hover{
+                                transform: scale(1.2);
+                            }
+                        }
+                    }
+                }
+
+                #upload{
+                    display: none;
+                }
+
+                .add-p-btn{
+                    display: block;
+                    margin-left: auto;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: 2px solid #fff;
+                    background: #030f3d;
+                    color: #fff;
+                    font-weight: 400;
+                    transition: all 0.3s ease-in-out;
+            
+                    &:hover{
+                        background: transparent;
+                        color: #030f3d;
+                        border: 2px solid #030f3d;
+                    }
+                }
+            }
+        }
+    }
+
+    .products-table{
+
+        .update-product{
+
+            form{
+                display: flex;
+
+                select{
+                    margin-right: 20px;
+
+                    &:focus{
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .update-product-content{
+                display: flex;
+                flex-direction: column;
+
+                .card{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    border: 2px solid #dedddd;
+                    padding: 10px;
+                    border-radius: 10px;
+
+                    .card-img-top{
+                        width: 4rem;
+
+                    }
+
+                    .card-body{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        justify-content: center;
+                    }
+
+                    .list-group-item{
+                        border: none;
+                        margin: 0 20px;
+                    }
+
+                    .card-buttons{
+                        display: flex;
+                        
+                        .product-update-btn{
+                            border: none;
+                            font-size: 18px;
+                            background: transparent;
+                            transition: all 0.3s ease-in-out;
+                            margin-right: 30px;
+                            padding: 5px;
+
+                            &:hover{
+                                transform: scale(1.2);
+                            }
+                        }
+
+                        .product-remove-btn{
+                            font-size: 18px;
+                            border: none;
+                            background: none;
+                            color: #cb1717de;
+                            transition: all 0.3s ease-in-out;
+                            padding: 5px;
+
+                            &:hover{
+                                transform: scale(1.2);
+                            }
+                        }
+                    }
+                }
+
+                .pagination{
+                    display: block;
+
+                    ul{
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 10px;
+                        margin-bottom: 0;
+                        padding: 0;
+
+                        li{
+                            margin: 0 3px;
+                            background: transparent;
+
+
+                            a{
+                                color: #fff;
+                                border: 2px solid #fff;
+                                background-color: #030f3d;
+                                border-radius: 5px;
+
+                                &:focus{
+                                    box-shadow: none;
+                                }
+
+                                &:hover{
+                                    z-index: 2;
+                                    box-shadow: none;
+                                    color: #030f3d;
+                                    background-color: #fff;
+                                    border: 2px solid #030f3d;
+                                }
+                            }
+                        }
+
+                        li.active{
+                            a{
+                                z-index: 3;
+                                box-shadow: none;
+                                color: #030f3d;
+                                background-color: #fff;
+                                border: 2px solid #030f3d;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

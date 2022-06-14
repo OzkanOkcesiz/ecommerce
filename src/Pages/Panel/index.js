@@ -10,16 +10,13 @@ import {
   Row,
   Tab,
 } from "react-bootstrap";
-import AddCategory from "../AddCategory";
-import AddProduct from "../AddProduct";
-import UpdateCategory from "../UpdateCategory";
-import UpdateDeleteProduct from "../UpdateDeleteProduct";
-import { Link } from "react-router-dom";
-import { useProduct } from "../../context/ProductContext";
-import axios from "axios";
-import Dashboard from "../Dashboard";
-import Orders from "../Orders";
-import PanelCategories from "../PanelCategories";
+
+import Dashboard from "../../components/Dashboard/index";
+import Orders from "../../components/Orders/index";
+import PanelCategories from "../../components/PanelCategories/index";
+import PanelProducts from "../../components/PanelProducts/index";
+import PanelHomeContent from "../../components/PanelHomeContent/index";
+
 
 const Panel = () => {
   return (
@@ -54,10 +51,10 @@ const Panel = () => {
             <NavLink href="#Categories" className="panel-sidebar-item">
               Kategori <i className="fa-solid fa-tags"></i>
             </NavLink>
-            <NavLink href="#PanelOrders" className="panel-sidebar-item">
+            <NavLink href="#Products" className="panel-sidebar-item">
               Ürünler <i className="fa-solid fa-tag"></i>
             </NavLink>
-            <NavLink href="#PanelOrders" className="panel-sidebar-item">
+            <NavLink href="#PanelHomePage" className="panel-sidebar-item">
               Anasayfa <i className="fa-solid fa-house"></i>
             </NavLink>
           </Col>
@@ -72,11 +69,11 @@ const Panel = () => {
               <Tab.Pane eventKey="#Categories">
               <PanelCategories />
               </Tab.Pane>
-              <Tab.Pane eventKey="#AddProduct">
-                <AddProduct />
+              <Tab.Pane eventKey="#Products">
+               <PanelProducts />
               </Tab.Pane>
-              <Tab.Pane eventKey="#UpdateDeleteProduct">
-                <UpdateDeleteProduct />
+              <Tab.Pane eventKey="#PanelHomePage">
+                <PanelHomeContent />
               </Tab.Pane>
             </Tab.Content>
           </Col>

@@ -37,7 +37,6 @@ const PanelCategories = () => {
                   <td>{category.id}</td>
                   <td>{category.categoryName}</td>
                   <td>
-                    {" "}
                     <UpdateCategory category={category} />
                   </td>
                   <td> <CategoryRemove category={category} /> </td>

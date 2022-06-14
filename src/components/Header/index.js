@@ -2,6 +2,8 @@ import { Badge, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
 import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const { categories } = useCategory();
@@ -11,6 +13,16 @@ const Header = () => {
     const newCart = cart.filter((c) => c.product.id !== product.id);
     setCart(newCart);
   };
+
+  const notifyRemove = (product) => toast.error( `${product.name} Silindi!`, {
+    position: "bottom-right",
+    autoClose: 1000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
 
   return (
     <div className="header">
@@ -35,22 +47,6 @@ const Header = () => {
             </div>
 
             <div className="cart-box">
-              {/* <NavLink
-                style={({ isActive }) => ({
-                  color: isActive ? "red" : "blue",
-                })}
-                to="/SingUp"
-              >
-                Üye Ol
-              </NavLink>
-              <NavLink
-                style={({ isActive }) => ({
-                  color: isActive ? "red" : "blue",
-                })}
-                to="/Login"
-              >
-                Giriş
-              </NavLink> */}
               <NavDropdown
                 show={!cart.length ? false : undefined}
                 className="cart-dropdown"
@@ -62,7 +58,6 @@ const Header = () => {
                 }
                 id={"basic-nav-dropdown"}
               >
-                {/* <div className="dropdown-menu show"></div> */}
                 {cart.map((cart) => (
                   <div className="cart-item" key={cart.product.id}>
                     <div className="cart-holder flex-start">
@@ -91,7 +86,10 @@ const Header = () => {
                       </span>
                       <button
                         className="cart-item-remove"
-                        onClick={() => removeProduct(cart.product)}
+                        onClick={() => {
+                          removeProduct(cart.product)
+                          notifyRemove(cart.product)
+                          }}
                       >
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>

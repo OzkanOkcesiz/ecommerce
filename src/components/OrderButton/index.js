@@ -31,24 +31,6 @@ const OrderButton = () => {
       adress: "",
     },
 
-    // validate: (values) => {
-    //   const errors = {};
-    //   if (!values.name) {
-    //     errors.name = "Alanı doldurun";
-    //   } else if (!values.categoryId) {
-    //     errors.categoryId = "Kategori Seçin";
-    //   } else if (values.categoryId === "Lütfen Kategori Seçin") {
-    //     errors.categoryId = "Kategori Seçin";
-    //   } else if (!values.author) {
-    //     errors.author = "Alanı doldurun";
-    //   } else if (!values.publisher) {
-    //     errors.publisher = "Alanı doldurun";
-    //   } else if (!values.price) {
-    //     errors.price = "Alanı doldurun";
-    //   }
-
-    //   return errors;
-    // },
 
     onSubmit: (values, { setSubmitting }) => {
       axios

@@ -9,7 +9,7 @@ const DetailButton = ({ order }) => {
   return (
     <div className="detail-button">
       <button className="detail-btn" onClick={handleShow}>
-        Detay
+      <i className="fa-solid fa-pen-to-square"></i>
       </button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

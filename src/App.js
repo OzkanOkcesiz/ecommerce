@@ -1,14 +1,16 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Category from "./components/Category";
-import Panel from "./components/Panel";
+// import Panel from "./Pages/Panel";
 import { CategoryProvider } from "./context/CategoryContext";
 import { ProductProvider } from "./context/ProductContext";
-import CartDetail from "./components/CartDetail";
-// const Home = lazy(() => import("./components/Home"))
-// const Category = lazy(() => import("./components/Category"))
+// import CartDetail from "./Pages/CartDetail/index";
+// import Home from "./Pages/Home";
+// import Category from "./Pages/Category";
+const Home = lazy(() => import("./Pages/Home"));
+const CartDetail = lazy(() => import("./Pages/CartDetail"));
+const Category = lazy(() => import("./Pages/Category"));
+const Panel = lazy(() => import("./Pages/Panel"));
 
 function App() {
   return (
@@ -16,12 +18,14 @@ function App() {
       <CategoryProvider>
         <ProductProvider>
           <BrowserRouter>
-            <Routes>
-              <Route path="/*" element={<Home />} />
-              <Route path="CartDetail" element={<CartDetail />} />
-              <Route path="Category/:categoryId" element={<Category />} />
-              <Route path="/Panel" element={<Panel />} />
-            </Routes>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route path="/*" element={ <Home/> } />
+                <Route path="CartDetail" element={<CartDetail />} />
+                <Route path="Category/:categoryId" element={<Category />} />
+                <Route path="/Panel" element={<Panel />} />
+              </Routes>
+            </Suspense>
           </BrowserRouter>
         </ProductProvider>
       </CategoryProvider>

@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useCategory } from "../../context/CategoryContext";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const AddCategory = () => {
   const { categoryValue, setCategoryValue } = useCategory();

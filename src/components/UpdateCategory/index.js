@@ -55,7 +55,7 @@ const UpdateCategory = ({category}) => {
   return (
     <div>
       <button  className="update-btn" onClick={handleShow}>
-      <i class="fa-solid fa-pen-to-square"></i>
+      <i className="fa-solid fa-pen-to-square"></i>
       </button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

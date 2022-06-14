@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
 
@@ -96,7 +96,7 @@ const UpdateButton = ({ product }) => {
           name: values.name,
           author: values.author,
           publisher: values.publisher,
-          price: values.price,
+          price: (values.price).toFixed(2),
           img: imageUpdate,
         })
         .then((res) => {
@@ -125,9 +125,9 @@ const UpdateButton = ({ product }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Güncelle
-      </Button>
+      <button className="product-update-btn" onClick={handleShow}>
+      <i className="fa-solid fa-pen-to-square"></i>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -190,30 +190,32 @@ const UpdateButton = ({ product }) => {
             />
             {errors.price && touched.price && errors.price}
             <br />
-            {/* <Form.Control
-              id="url"
-              name="img"
-              type="url"
-              placeholder="Resim Eklemek İçin Url Girin"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              size = "sm"
-              
-            /> */}
-
-            <br />
-            <div>
+            <div className="label-update-box">
               <label
-                className={imageUpdate ? "btn btn-primary" : "btn btn-primary"}
+                className={imageUpdate ? "image-update-label" : "image-update-label-empty"}
                 htmlFor="upload-update"
               >
                 {imageUpdate
-                  ? // <i className="fa fa-upload" aria-hidden="true"></i>
-                    "Resim Güncelle"
-                  : // <i className="fa fa-upload" aria-hidden="true"></i>
-                    "Resim Güncelle"}
+                  ? 
+                  <img alt="" width={"70px"} src={imageUpdate} />
+                  : 
+                  <i className="fa-solid fa-upload"></i>}
               </label>
-              <img alt="" width={"50px"} src={imageUpdate} />
+              {imageUpdate ? (
+              <button
+                className="close-update-btn"
+                onClick={() => {
+                  values.name = "";
+                  values.author = "";
+                  values.publisher = "";
+                  values.price = "";
+                  values.img = "";
+                  setImageUpdate("");
+                }}
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            ) : null}
               <input
                 id="upload-update"
                 name="img"
@@ -228,12 +230,12 @@ const UpdateButton = ({ product }) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmit}>
+          <button type="submit"  onClick={handleSubmit}>
             Güncelle
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
+          </button>
+          <button  onClick={handleClose}>
             Kapat
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>

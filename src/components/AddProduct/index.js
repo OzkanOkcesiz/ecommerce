@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useCategory } from "../../context/CategoryContext";
-import { Button, Form } from "react-bootstrap";
+import { Button, CloseButton, Form } from "react-bootstrap";
 import { useProduct } from "../../context/ProductContext";
 
 const AddProduct = () => {
@@ -65,6 +65,7 @@ const AddProduct = () => {
       } else if (!values.price) {
         errors.price = "Alanı doldurun";
       } else if (!image) {
+        console.log(values.img);
         errors.img = "Resim yükleyin";
       }
 
@@ -101,12 +102,14 @@ const AddProduct = () => {
           values.publisher = "";
           values.price = "";
           values.img = "";
+                    setImage("");
+          setProductValue(!productValue);
         });
     },
   });
 
   return (
-    <div>
+    <div className="add-product">
       <form onSubmit={handleSubmit}>
         <select
           name={"categoryId"}
@@ -162,46 +165,35 @@ const AddProduct = () => {
           value={values.price}
         />
         {errors.price && touched.price && errors.price}
-        <br />
-        {/* <Form.Control
-              id="url"
-              name="img"
-              type="url"
-              placeholder="Resim Eklemek İçin Url Girin"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              size = "sm"
-              
-            /> */}
-
-        <br />
         <div>
-          <label
-            className={image ? "btn btn-primary" : "btn btn-primary"}
-            htmlFor="upload"
-          >
-            {image
-              ? // <i className="fa fa-upload" aria-hidden="true"></i>
-                "Resim Yüklendi"
-              : // <i className="fa fa-upload" aria-hidden="true"></i>
-                "Resim Yükle"}
-          </label>
-          <img alt="" width={"50px"} src={image} />
-          {image ? (
-            <Button
-              className="btn btn-secondary"
-              onClick={() => {
-                values.name = "";
-                values.author = "";
-                values.publisher = "";
-                values.price = "";
-                values.img = "";
-                setImage("");
-              }}
+          <div className="label-box">
+            <label
+              className={image ? "image-label" : "image-label-empty"}
+              htmlFor="upload"
             >
-              İptal
-            </Button>
-          ) : null}
+              {image ? (
+                <img alt="" width={"70px"} src={image} />
+              ) : (
+                <i className="fa-solid fa-upload"></i>
+              )}
+            </label>
+
+            {image ? (
+              <button
+                className="close-btn"
+                onClick={() => {
+                  values.name = "";
+                  values.author = "";
+                  values.publisher = "";
+                  values.price = "";
+                  values.img = "";
+                  setImage("");
+                }}
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            ) : null}
+          </div>
 
           <input
             id="upload"
@@ -214,14 +206,13 @@ const AddProduct = () => {
           />
           {errors.img && touched.img && errors.img}
         </div>
-        <br />
-        <Button
-          className="btn btn-success"
+        <button
+          className="add-p-btn"
           type="submit"
           disabled={isSubmitting}
         >
           Ekle
-        </Button>
+        </button>
       </form>
     </div>
   );

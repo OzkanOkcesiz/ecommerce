@@ -3,7 +3,10 @@
         vertical-align: middle !important;
 
         .order-remove{
+            font-size: 18px;
             border: none;
+            background: none;
+            color: #cb1717de;
             transition: all 0.3s ease-in-out;
 
             &:hover{
