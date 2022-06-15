@@ -3,7 +3,7 @@ import { useProduct } from "../../context/ProductContext";
 import OrderButton from "../OrderButton";
 
 const OrderSummary = () => {
-  const { cart, setCart } = useProduct();
+  const { cart } = useProduct();
   return (
     <div className="order-summary-container">
       <div className="order-summary-header">Sipariş Özeti</div>

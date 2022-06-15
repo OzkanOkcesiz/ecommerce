@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Card, Carousel, CarouselItem, ListGroup, ListGroupItem } from "react-bootstrap";
-import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,9 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 const HomeContent = () => {
   const [index, setIndex] = useState(0);
   const { sliders } = useProduct();
-  const { featuredProducts, setFeaturedProducts } = useProduct();
+  const { featuredProducts } = useProduct();
   const { cart, setCart } = useProduct();
-  const { categories } = useCategory();
 
   const notifyAdd = (product) => toast.success( `${product.name} Sepete Eklendi!`, {
     position: "bottom-right",
@@ -47,7 +45,7 @@ const HomeContent = () => {
         ))}
       </Carousel>
 
-      <div className="productContainer">
+      {featuredProducts.length !==0  && <div className="productContainer">
         <h2 className="product-title">Öne Çıkan Ürünler</h2>
         <div className="product-content">
           {featuredProducts.map((product) => (
@@ -90,7 +88,7 @@ const HomeContent = () => {
         draggable
         pauseOnHover
       />
-      </div>
+      </div>}
     </div>
   );
 };

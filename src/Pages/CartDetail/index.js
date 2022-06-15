@@ -5,19 +5,19 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import OrderSummary from "../../components/OrderSummary";
+import { useNavigate } from "react-router-dom";
 
 const CartDetail = () => {
+  const navigate = useNavigate();
   const { cart, setCart } = useProduct();
   const removeProduct = (product) => {
     const newCart = cart.filter((c) => c.product.id !== product.id);
     setCart(newCart);
   };
 
-
   const cartItemQuantityDecrease = (product) => {
     const newCart = cart.map((c) => {
       if (c.quantity === 1) {
-        
       } else if (c.product.id === product.id) {
         c.quantity -= 1;
       }
@@ -36,16 +36,33 @@ const CartDetail = () => {
     setCart(newCart);
   };
 
-  const notifyRemove = (product) => toast.error( `${product.name} Silindi!`, {
-    position: "bottom-right",
-    autoClose: 1000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
+  const notifyRemove = (product) =>
+    toast.error(`${product.name} Silindi!`, {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
 
+  if (cart.length === 0) {
+    return (
+      <div className="cart-detail-container">
+        <Header />
+        <div className="empty-cart">
+          <div className="empty-cart-content">
+            <h3 className="empty-cart-title"> Sepetiniz boş </h3>
+            <button className="empty-cart-btn" onClick={() => navigate("/")}>
+              Hemen Alışverişe Başla
+            </button>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
   return (
     <div>
       <Header />
@@ -103,16 +120,16 @@ const CartDetail = () => {
           <OrderSummary />
         </div>
         <ToastContainer
-        position="bottom-right"
-        autoClose={500}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+          position="bottom-right"
+          autoClose={500}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
       <Footer />
     </div>

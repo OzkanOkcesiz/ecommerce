@@ -2,7 +2,7 @@ import { Badge, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
 import { useCategory } from "../../context/CategoryContext";
 import { useProduct } from "../../context/ProductContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {

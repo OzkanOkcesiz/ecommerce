@@ -83,6 +83,8 @@ const UpdateButton = ({ product }) => {
       }
       if (!values.price) {
         values.price = product.price;
+      }else if (values.price) {
+        values.price = parseInt(values.price).toFixed(2);
       }
       if (!imageUpdate) {
         setImageUpdate(product.img)
@@ -96,7 +98,7 @@ const UpdateButton = ({ product }) => {
           name: values.name,
           author: values.author,
           publisher: values.publisher,
-          price: (values.price).toFixed(2),
+          price: values.price,
           img: imageUpdate,
         })
         .then((res) => {

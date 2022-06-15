@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { Button } from "react-bootstrap";
 import { useProduct } from "../../context/ProductContext";
 import DetailButton from "../DetailButton";
 

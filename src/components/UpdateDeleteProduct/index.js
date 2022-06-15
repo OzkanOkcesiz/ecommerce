@@ -19,7 +19,6 @@ const UpdateDeleteProduct = () => {
 
   const productSearch = (e) => {
     setProductSearchValue(e.target.value);
-    console.log(e.target.value);
   };
 
   const selectChange = (e) => {

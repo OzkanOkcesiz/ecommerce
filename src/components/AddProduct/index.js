@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useCategory } from "../../context/CategoryContext";
-import { Button, CloseButton, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useProduct } from "../../context/ProductContext";
 
 const AddProduct = () => {
@@ -65,7 +65,6 @@ const AddProduct = () => {
       } else if (!values.price) {
         errors.price = "Alanı doldurun";
       } else if (!image) {
-        console.log(values.img);
         errors.img = "Resim yükleyin";
       }
 

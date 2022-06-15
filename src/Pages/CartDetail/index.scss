@@ -1,6 +1,38 @@
 .cart-detail-container{
     min-height: 70vh;
 
+    .empty-cart{
+        height: calc(100vh - 304px);
+
+        .empty-cart-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+
+            .empty-cart-title{
+                font-weight: bold;
+                text-align: center;
+                color: #959595;
+                margin-bottom: 20px;
+            }
+
+            .empty-cart-btn{
+                padding: 5px;
+                border: 1px solid #f27a1a;
+                border-radius: 10px;
+                background: #fff;
+                color: #f27a1a;
+                transition: all 0.3s ease-in-out;
+
+                &:hover{
+                    background: #f27a1a;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
     .cart-detail-box {
         display: flex;
         flex-direction: column;

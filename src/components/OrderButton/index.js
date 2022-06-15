@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { Form, Modal } from "react-bootstrap";
 import { useProduct } from "../../context/ProductContext";
+import { toast } from "react-toastify";
 
 const OrderButton = () => {
   const { cart, setCart } = useProduct();
@@ -14,6 +15,17 @@ const OrderButton = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const notifyInfo = () =>
+    toast.info("Siparişiniz Alındı", {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   const {
     values,
     errors,
@@ -21,7 +33,6 @@ const OrderButton = () => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting,
   } = useFormik({
     initialValues: {
       name: "",
@@ -143,6 +154,7 @@ const OrderButton = () => {
             () => {
               handleSubmit();
               handleClose();
+              notifyInfo();
             }
           }>
             Alışverişi Tamamla
