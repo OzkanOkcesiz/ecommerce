@@ -55,7 +55,7 @@ const CartDetail = () => {
           <div className="empty-cart-content">
             <h3 className="empty-cart-title"> Sepetiniz boş </h3>
             <button className="empty-cart-btn" onClick={() => navigate("/")}>
-              Hemen Alışverişe Başla
+              Alışverişe Devam Et
             </button>
           </div>
         </div>

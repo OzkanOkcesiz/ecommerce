@@ -152,7 +152,9 @@ const OrderButton = () => {
         <Modal.Footer>
           <button className="order-btn" onClick={ 
             () => {
-              handleSubmit();
+              setTimeout(() => {
+                handleSubmit();
+              }, 1000);
               handleClose();
               notifyInfo();
             }
